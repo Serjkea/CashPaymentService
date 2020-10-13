@@ -1,0 +1,16 @@
+{
+    "namespace": "cashpaymentservice",
+    "type": "record",
+    "name": "ValidPayment",
+    "fields": [
+        {
+            "name": "from", "type": "string"
+        },
+        {
+            "name": "recipient", "type": "string"
+        },
+        {
+            "name": "value", "type": "int"
+        }
+    ]
+}

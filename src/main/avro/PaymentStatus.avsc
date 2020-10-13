@@ -1,0 +1,11 @@
+{
+    "namespace": "cashpaymentservice",
+    "type": "record",
+    "name": "PaymentStatus",
+    "fields": [
+        {
+            "name": "message", "type": "cashpaymentservice.PaymentLoggingMessage"
+        }
+    ]
+
+}

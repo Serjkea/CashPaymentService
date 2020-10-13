@@ -1,0 +1,104 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(early(addPluginSbtFile="""C:\Users\skostenko\AppData\Local\Temp\idea4.sbt"""), None, None)
+[debug] > Exec(addPluginSbtFile="""C:\Users\skostenko\AppData\Local\Temp\idea4.sbt""", None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.4.0 (Oracle Corporation Java 11)
+[debug]       Load.loadUnit: plugins took 101.6352ms
+[debug]       Load.loadUnit: defsScala took 0.2963ms
+[debug] [Loading] Scanning directory C:\Users\skostenko\.sbt\1.0\plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\skostenko\.sbt\1.0\plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 19.7621 ms
+[debug]           Load.resolveProject(global-plugins) took 43.7328ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: C:\Users\skostenko\.sbt\1.0\plugins, plugins: List(<none>))) took 93.7287ms
+[debug] [Loading] Done in C:\Users\skostenko\.sbt\1.0\plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 115.5811ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.2201ms
+[debug]     Load.loadUnit(file:/C:/Users/skostenko/.sbt/1.0/plugins/, ...) took 226.0122ms
+[debug]   Load.apply: load took 411.6002ms
+[debug]   Load.apply: resolveProjects took 5.8564ms
+[debug]   Load.apply: finalTransforms took 70.8784ms
+[debug]   Load.apply: config.delegates took 6.5943ms
+[debug]   Load.apply: Def.make(settings)... took 1202.1184ms
+[debug]   Load.apply: structureIndex took 134.5266ms
+[debug]   Load.apply: mkStreams took 1.4981ms
+[info] loading global plugins from C:\Users\skostenko\.sbt\1.0\plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 5014.7535ms
+[debug]           Load.loadUnit: plugins took 24.6166ms
+[debug]           Load.loadUnit: defsScala took 0.0029ms
+[debug] [Loading] Scanning directory C:\Users\skostenko\IdeaProjects\CashPaymentService\project
+[debug]             Load.loadUnit: mkEval took 7.1062ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\skostenko\IdeaProjects\CashPaymentService\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.4581 ms
+[info] loading settings for project cashpaymentservice-build from cloudflow-plugins.sbt,idea4.sbt ...
+[debug]               Load.resolveProject(cashpaymentservice-build) took 3.1128ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id cashpaymentservice-build, base: C:\Users\skostenko\IdeaProjects\CashPaymentService\project, plugins: List(<none>))) took 5.0794ms
+[debug] [Loading] Done in C:\Users\skostenko\IdeaProjects\CashPaymentService\project, returning: (cashpaymentservice-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 1931.6293ms
+[debug]           Load.loadUnit: cleanEvalClasses took 5.3488ms
+[debug]         Load.loadUnit(file:/C:/Users/skostenko/IdeaProjects/CashPaymentService/project/, ...) took 1962.6122ms
+[debug]       Load.apply: load took 1963.9871ms
+[debug]       Load.apply: resolveProjects took 0.0859ms
+[debug]       Load.apply: finalTransforms took 6.6289ms
+[debug]       Load.apply: config.delegates took 0.6625ms
+[debug]       Load.apply: Def.make(settings)... took 63.2508ms
+[debug]       Load.apply: structureIndex took 19.2018ms
+[debug]       Load.apply: mkStreams took 0.0035ms
+[info] loading project definition from C:\Users\skostenko\IdeaProjects\CashPaymentService\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
+[debug]     Load.loadUnit: plugins took 4677.6149ms
+[debug]     Load.loadUnit: defsScala took 0.003ms
+[debug] [Loading] Scanning directory C:\Users\skostenko\IdeaProjects\CashPaymentService
+[debug]       Load.loadUnit: mkEval took 0.2491ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\skostenko\IdeaProjects\CashPaymentService, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(cloudflow.sbt.BlueprintVerificationPlugin),Set(Atom(cloudflow.sbt.CommonSettingsAndTasksPlugin))), Clause(Atom(cloudflow.sbt.BlueprintVerificationPlugin),Set(Atom(cloudflow.sbt.StreamletScannerPlugin))), Clause(Atom(cloudflow.sbt.BuildAppPlugin),Set(Atom(cloudflow.sbt.StreamletDescriptorsPlugin))), Clause(Atom(cloudflow.sbt.BuildAppPlugin),Set(Atom(cloudflow.sbt.BlueprintVerificationPlugin))), Clause(Atom(cloudflow.sbt.BuildNumberPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(cloudflow.sbt.CloudflowAkkaPlugin),Set(Atom(cloudflow.sbt.CloudflowBasePlugin))), Clause(Atom(cloudflow.sbt.CloudflowApplicationPlugin),Set(Atom(cloudflow.sbt.BuildAppPlugin))), Clause(Atom(cloudflow.sbt.CloudflowApplicationPlugin),Set(Atom(cloudflow.sbt.StreamletDescriptorsPlugin))), Clause(Atom(cloudflow.sbt.CloudflowApplicationPlugin),Set(Atom(cloudflow.sbt.BlueprintVerificationPlugin))), Clause(Atom(cloudflow.sbt.CloudflowBasePlugin),Set(Atom(sbtdocker.DockerPlugin))), Clause(Atom(cloudflow.sbt.CloudflowBasePlugin),Set(Atom(cloudflow.sbt.StreamletDescriptorsPlugin))), Clause(Atom(cloudflow.sbt.CloudflowBasePlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))), Clause(Atom(cloudflow.sbt.CloudflowFlinkPlugin),Set(Atom(cloudflow.sbt.CloudflowBasePlugin))), Clause(Atom(cloudflow.sbt.CloudflowLibraryPlugin),Set(Atom(cloudflow.sbt.CommonSettingsAndTasksPlugin))), Clause(Atom(cloudflow.sbt.CloudflowLocalRunnerPlugin),Set(Atom(cloudflow.sbt.BlueprintVerificationPlugin))), Clause(Atom(cloudflow.sbt.CloudflowSparkPlugin),Set(Atom(cloudflow.sbt.CloudflowBasePlugin))), Clause(Atom(cloudflow.sbt.CommonSettingsAndTasksPlugin),Set(Atom(akka.grpc.sbt.AkkaGrpcPlugin))), Clause(Atom(cloudflow.sbt.CommonSettingsAndTasksPlugin),Set(Atom(sbtprotoc.ProtocPlugin))), Clause(Atom(cloudflow.sbt.CommonSettingsAndTasksPlugin),Set(Atom(sbtavro.SbtAvro))), Clause(Atom(cloudflow.sbt.CommonSettingsAndTasksPlugin),Set(Atom(cloudflow.sbt.BuildNumberPlugin))), Clause(Atom(cloudflow.sbt.CommonSettingsAndTasksPlugin),Set(Atom(sbtavrohugger.SbtAvrohugger))), Clause(Atom(cloudflow.sbt.StreamletDescriptorsPlugin),Set(Atom(cloudflow.sbt.CommonSettingsAndTasksPlugin))), Clause(Atom(cloudflow.sbt.StreamletDescriptorsPlugin),Set(Atom(cloudflow.sbt.StreamletScannerPlugin))), Clause(Atom(cloudflow.sbt.StreamletScannerPlugin),Set(Atom(cloudflow.sbt.CommonSettingsAndTasksPlugin))), Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbtdocker.DockerPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(com.typesafe.sbt.SbtNativePackager),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.windows.WindowsPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.docker.DockerPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.debian.DebianPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.rpm.RpmPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.JavaServerAppPackaging),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))), Clause(Atom(com.typesafe.sbt.packager.archetypes.jar.ClasspathJarPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))), Clause(Atom(com.typesafe.sbt.packager.archetypes.jar.LauncherJarPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))), Clause(Atom(com.typesafe.sbt.packager.archetypes.jlink.JlinkPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))), Clause(Atom(com.typesafe.sbt.packager.archetypes.scripts.AshScriptPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))), Clause(Atom(com.typesafe.sbt.packager.archetypes.scripts.AshScriptPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.scripts.BashStartScriptPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.scripts.BashStartScriptPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))), Clause(Atom(com.typesafe.sbt.packager.archetypes.scripts.BatStartScriptPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))), Clause(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemVPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemdPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin),Set(Atom(com.typesafe.sbt.packager.debian.DebianPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin),Set(Atom(com.typesafe.sbt.packager.rpm.RpmPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.systemloader.UpstartPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin))), Clause(Atom(com.typesafe.sbt.packager.debian.DebianDeployPlugin),Set(Atom(com.typesafe.sbt.packager.debian.DebianPlugin))), Clause(Atom(com.typesafe.sbt.packager.debian.DebianPlugin),Set(Atom(com.typesafe.sbt.packager.linux.LinuxPlugin))), Clause(Atom(com.typesafe.sbt.packager.debian.JDebPackaging),Set(Atom(com.typesafe.sbt.packager.debian.DebianPlugin))), Clause(Atom(com.typesafe.sbt.packager.docker.DockerPlugin),Set(Atom(com.typesafe.sbt.packager.universal.UniversalPlugin))), Clause(Atom(com.typesafe.sbt.packager.docker.DockerSpotifyClientPlugin),Set(Atom(com.typesafe.sbt.packager.docker.DockerPlugin))), Clause(Atom(com.typesafe.sbt.packager.graalvmnativeimage.GraalVMNativeImagePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(com.typesafe.sbt.packager.jdkpackager.JDKPackagerDeployPlugin),Set(Atom(com.typesafe.sbt.packager.jdkpackager.JDKPackagerPlugin))), Clause(Atom(com.typesafe.sbt.packager.jdkpackager.JDKPackagerPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))), Clause(Atom(com.typesafe.sbt.packager.jdkpackager.JDKPackagerPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.jar.LauncherJarPlugin))), Clause(Atom(com.typesafe.sbt.packager.linux.LinuxPlugin),Set(Atom(com.typesafe.sbt.packager.universal.UniversalPlugin))), Clause(Atom(com.typesafe.sbt.packager.rpm.RpmDeployPlugin),Set(Atom(com.typesafe.sbt.packager.rpm.RpmPlugin))), Clause(Atom(com.typesafe.sbt.packager.rpm.RpmPlugin),Set(Atom(com.typesafe.sbt.packager.linux.LinuxPlugin))), Clause(Atom(com.typesafe.sbt.packager.universal.UniversalDeployPlugin),Set(Atom(com.typesafe.sbt.packager.universal.UniversalPlugin))), Clause(Atom(com.typesafe.sbt.packager.universal.UniversalPlugin),Set(Atom(com.typesafe.sbt.SbtNativePackager))), Clause(Atom(com.typesafe.sbt.packager.windows.WindowsDeployPlugin),Set(Atom(com.typesafe.sbt.packager.windows.WindowsPlugin))), Clause(Atom(com.typesafe.sbt.packager.windows.WindowsPlugin),Set(Atom(com.typesafe.sbt.packager.universal.UniversalPlugin))), Clause(Atom(sbtavro.SbtAvro),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(akka.grpc.sbt.AkkaGrpcPlugin),Set(Atom(sbtprotoc.ProtocPlugin))), Clause(Atom(sbtavrohugger.SbtAvrohugger),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(com.lightbend.sbt.javaagent.JavaAgent),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(com.lightbend.sbt.javaagent.JavaAgentPackaging),Set(Atom(com.lightbend.sbt.javaagent.JavaAgent))), Clause(Atom(com.lightbend.sbt.javaagent.JavaAgentPackaging),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))), Clause(Atom(de.heikoseeberger.sbtheader.AutomateHeaderPlugin),Set(Atom(de.heikoseeberger.sbtheader.HeaderPlugin))), Clause(Atom(de.heikoseeberger.sbtheader.HeaderPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbtprotoc.ProtocPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.portablescala.sbtplatformdeps.PlatformDepsPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))), Clause(Atom(cloudflow.sbt.BlueprintVerificationPlugin),Set(Atom(cloudflow.sbt.CloudflowLocalRunnerPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin))), Clause(And(Set(Atom(sbt.plugins.CorePlugin), Atom(sbt.plugins.JvmPlugin))),Set(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.archetypes.scripts.BashStartScriptPlugin))), Clause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.archetypes.scripts.BatStartScriptPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbtavro.SbtAvro))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbtavrohugger.SbtAvrohugger))), Clause(And(Set(Atom(com.lightbend.sbt.javaagent.JavaAgent), Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))),Set(Atom(com.lightbend.sbt.javaagent.JavaAgentPackaging))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(de.heikoseeberger.sbtheader.HeaderPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbtprotoc.ProtocPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.portablescala.sbtplatformdeps.PlatformDepsPlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,de.heikoseeberger.sbtheader.HeaderPlugin,sbtavro.SbtAvro,org.portablescala.sbtplatformdeps.PlatformDepsPlugin,sbt.plugins.SemanticdbPlugin,org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin,sbt.plugins.JUnitXmlReportPlugin,sbtprotoc.ProtocPlugin,org.jetbrains.sbt.IdeaShellPlugin,sbtavrohugger.SbtAvrohugger,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 8.3276 ms
+[info] loading settings for project cashpaymentservice from build.sbt ...
+[debug]         Load.resolveProject(cashpaymentservice) took 65.0642ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id cashpaymentservice, base: C:\Users\skostenko\IdeaProjects\CashPaymentService, plugins: List(<none>))) took 74.9974ms
+[debug] [Loading] Done in C:\Users\skostenko\IdeaProjects\CashPaymentService, returning: (cashpaymentservice)
+[debug]     Load.loadUnit: loadedProjectsRaw took 1286.1178ms
+[debug]     Load.loadUnit: cleanEvalClasses took 11.4394ms
+[debug]   Load.loadUnit(file:/C:/Users/skostenko/IdeaProjects/CashPaymentService/, ...) took 5975.6797ms
+[debug] Load.apply: load took 5978.2331ms
+[debug] Load.apply: resolveProjects took 0.101ms
+[debug] Load.apply: finalTransforms took 20.8497ms
+[debug] Load.apply: config.delegates took 0.2483ms
+[debug] Load.apply: Def.make(settings)... took 116.2373ms
+[debug] Load.apply: structureIndex took 16.1157ms
+[debug] Load.apply: mkStreams took 0.0021ms
+[info] set current project to CashPaymentService (in build file:/C:/Users/skostenko/IdeaProjects/CashPaymentService/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(; set ideaPort in Global := 55488 ; idea-shell, None, None)
+[debug] > Exec(set ideaPort in Global := 55488, None, None)
+[info] Defining Global / ideaPort
+[info] The new value will be used by Compile / compile, Test / compile
+[debug] Defining 
+[debug] 	Global / ideaPort
+[debug] 
+[debug] The new value will be used by 
+[debug] 	Compile / compile
+[debug] 	Test / compile
+[info] Reapplying settings...
+[info] set current project to CashPaymentService (in build file:/C:/Users/skostenko/IdeaProjects/CashPaymentService/)
+[debug] > Exec(idea-shell, None, None)

@@ -1,0 +1,13 @@
+{
+    "namespace": "cashpaymentservice",
+    "type": "record",
+    "name": "Participant",
+    "fields": [
+        {
+            "name": "id", "type": "int"
+        },
+        {
+            "name": "balance", "type": "int"
+        }
+    ]
+}
