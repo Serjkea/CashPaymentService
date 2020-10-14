@@ -3,6 +3,8 @@ package cashpaymentservice
 import cloudflow.flink._
 import cloudflow.streamlets.StreamletShape
 import cloudflow.streamlets.avro.{AvroInlet, AvroOutlet}
+import org.apache.flink.api.scala.createTypeInformation
+import org.apache.flink.streaming.api.scala.DataStream
 
 class PaymentCheckingStreamlet extends FlinkStreamlet {
 
@@ -15,7 +17,8 @@ class PaymentCheckingStreamlet extends FlinkStreamlet {
 
   override protected def createLogic(): FlinkStreamletLogic = new FlinkStreamletLogic() {
     override def buildExecutionGraph(): Unit = {
-
+      val inputPayment: DataStream[PaymentData] = readStream(paymentIn)
+      val outputPayment: DataStream[ValidPayment] = ???
     }
   }
 
