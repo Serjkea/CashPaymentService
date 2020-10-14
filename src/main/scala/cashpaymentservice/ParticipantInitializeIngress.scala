@@ -2,9 +2,8 @@ package cashpaymentservice
 
 import cloudflow.akkastream.util.scaladsl.HttpServerLogic
 import cloudflow.akkastream.{AkkaServerStreamlet, AkkaStreamletLogic}
-import cloudflow.streamlets.StreamletShape
 import cloudflow.streamlets.avro.AvroOutlet
-import org.apache.kafka.clients.producer.RoundRobinPartitioner
+import cloudflow.streamlets.{RoundRobinPartitioner, StreamletShape}
 
 class ParticipantInitializeIngress extends AkkaServerStreamlet{
 

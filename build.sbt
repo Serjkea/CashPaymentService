@@ -1,12 +1,13 @@
 import sbt._
 import sbt.Keys._
 
-lazy val sensorData =  (project in file("."))
-  .enablePlugins(CloudflowApplicationPlugin, CloudflowAkkaPlugin, CloudflowFlinkPlugin)
+lazy val cashPaymentService =  (project in file("."))
+  .enablePlugins(CloudflowApplicationPlugin, CloudflowAkkaPlugin, CloudflowFlinkPlugin, CloudflowLibraryPlugin)
   .settings(
     scalaVersion := "2.12.11",
     runLocalConfigFile := Some("src/main/resources/local.conf"),
     name := "cash-payment-service-scala",
+    schemaCodeGenerator := SchemaCodeGenerator.Scala,
 
     libraryDependencies ++= Seq(
       "com.lightbend.akka"     %% "akka-stream-alpakka-file"  % "1.1.2",
@@ -15,8 +16,8 @@ lazy val sensorData =  (project in file("."))
       "com.typesafe.akka"      %% "akka-http-testkit"         % "10.1.12" % "test",
       "org.scalatest"          %% "scalatest"                 % "3.0.8"  % "test"
     ),
-    organization := "com.lightbend.cloudflow",
-    headerLicense := Some(HeaderLicense.ALv2("(C) 2016-2020", "Lightbend Inc. <https://www.lightbend.com>")),
+    //organization := "com.lightbend.cloudflow",
+    //headerLicense := Some(HeaderLicense.ALv2("(C) 2016-2020", "Lightbend Inc. <https://www.lightbend.com>")),
 
     crossScalaVersions := Vector(scalaVersion.value),
     scalacOptions ++= Seq(

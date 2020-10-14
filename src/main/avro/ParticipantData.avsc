@@ -1,7 +1,7 @@
 {
     "namespace": "cashpaymentservice",
     "type": "record",
-    "name": "Participant",
+    "name": "ParticipantData",
     "fields": [
         {
             "name": "id", "type": "int"
