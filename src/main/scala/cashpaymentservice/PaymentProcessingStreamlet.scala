@@ -11,10 +11,10 @@ import org.apache.flink.streaming.api.scala.DataStream
 
 class PaymentProcessingStreamlet extends FlinkStreamlet{
 
-  val participantIn: AvroInlet[ParticipantData] = AvroInlet[ParticipantData]("participantIn")
-  val validPaymentIn: AvroInlet[ValidPayment] = AvroInlet[ValidPayment]("validPaymentIn")
+  @transient val participantIn: AvroInlet[ParticipantData] = AvroInlet[ParticipantData]("participantIn")
+  @transient val validPaymentIn: AvroInlet[ValidPayment] = AvroInlet[ValidPayment]("validPaymentIn")
 
-  val paymentStatusOut: AvroOutlet[PaymentStatus] = AvroOutlet[PaymentStatus]("paymentStatusOut")
+  @transient val paymentStatusOut: AvroOutlet[PaymentStatus] = AvroOutlet[PaymentStatus]("paymentStatusOut")
 
   override def shape(): StreamletShape = StreamletShape(paymentStatusOut).withInlets(participantIn,validPaymentIn)
 
@@ -23,9 +23,8 @@ class PaymentProcessingStreamlet extends FlinkStreamlet{
       val inputParticipant: DataStream[ParticipantData] = readStream(participantIn)
       val inputValidPayment: DataStream[ValidPayment] = readStream(validPaymentIn)
 
-      val outputPaymentStatus: DataStream[PaymentStatus] = inputParticipant.connect(inputValidPayment).map(new MakingPayment).
-
-      writeStream(outputPaymentStatus,paymentStatusOut)
+      val outputPaymentStatus: DataStream[PaymentStatus] = inputParticipant.connect(inputValidPayment).map(new MakingPayment)
+      writeStream(paymentStatusOut,outputPaymentStatus)
     }
   }
 
@@ -33,29 +32,30 @@ class PaymentProcessingStreamlet extends FlinkStreamlet{
 
 class MakingPayment extends RichCoMapFunction[ParticipantData,ValidPayment,PaymentStatus] {
 
-  @transient var mapState: MapState[Int,Int] = _
+  @transient var mapState: MapState[Int, Int] = _
 
   override def open(parameters: Configuration): Unit = {
     super.open(parameters)
-    mapState = getRuntimeContext.getMapState(new MapStateDescriptor[Int,Int]("participant", classOf[Int],classOf[Int]))
+    mapState = getRuntimeContext.getMapState(new MapStateDescriptor[Int, Int]("participant", classOf[Int], classOf[Int]))
   }
 
   override def map1(participant: ParticipantData): PaymentStatus = {
-    mapState.put(participant.id,participant.balance)
+    mapState.put(participant.id, participant.balance)
     PaymentStatus("INFO", s"For participant with ${participant.id} balance updated")
   }
 
   override def map2(payment: ValidPayment): PaymentStatus = {
-    val payer = payment.from.toInt //TODO!!!
+    val payer = payment.from.toInt  //TODO!!!
     val amount = payment.value
     if (mapState.contains(payer)) {
       val balance: Int = mapState.get(payer)
       if (balance >= amount) {
-        mapState.put(payer,balance-amount)
+        mapState.put(payer, balance - amount)
         PaymentStatus("INFO", s"Payment $payment was made!")
-      } else {
+      } else
         PaymentStatus("WARN", s"There is not enough money on the payer's $payer balance!")
-      }
     }
     PaymentStatus("WARN", s"The payer $payer was not found!")
-  }}
+  }
+
+}
