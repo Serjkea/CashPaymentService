@@ -1,27 +1,51 @@
 package cashpaymentservice
 
+import java.nio.file
 import java.nio.file.Path
 
-import akka.stream.scaladsl.{FileIO, Framing, RunnableGraph, Sink}
+import akka.NotUsed
+import akka.stream.IOResult
+import akka.stream.alpakka.file.scaladsl.Directory
+import akka.stream.scaladsl.{FileIO, Framing, RunnableGraph, Source}
 import akka.util.ByteString
 import cloudflow.akkastream.scaladsl.RunnableGraphStreamletLogic
 import cloudflow.akkastream.{AkkaStreamlet, AkkaStreamletLogic}
-import cloudflow.streamlets.{RoundRobinPartitioner, StreamletShape}
 import cloudflow.streamlets.avro.AvroOutlet
+import cloudflow.streamlets.{ReadWriteMany, RoundRobinPartitioner, StreamletShape, VolumeMount}
 
+import scala.concurrent.Future
 
 class FilePaymentsIngress extends AkkaStreamlet {
 
-  val out = AvroOutlet[PaymentData]("out").withPartitioner(RoundRobinPartitioner)
+  val paymentsOut: AvroOutlet[PaymentData] = AvroOutlet[PaymentData]("paymentsOut").withPartitioner(RoundRobinPartitioner)
 
-  override def shape(): StreamletShape = StreamletShape.withOutlets(out)
+  override def shape(): StreamletShape = StreamletShape.withOutlets(paymentsOut)
+
+  val fileDirectory: String = context.system.settings.config.getString("payments.directory")
+  val fileName:String = context.system.settings.config.getString("payments.filename")
+
+  private val sourceData = VolumeMount(fileName, fileDirectory, ReadWriteMany)
+  override def volumeMounts = Vector(sourceData)
 
   override protected def createLogic(): AkkaStreamletLogic = new RunnableGraphStreamletLogic() {
-    override def runnableGraph(): RunnableGraph[_] =
-      FileIO.fromPath(Path.of("/test-data/payments.dat"))
+
+    val listFiles: NotUsed ⇒ Source[file.Path, NotUsed] = { _ ⇒
+      Directory.ls(getMountedPath(sourceData))
+    }
+    val readFile: Path ⇒ Source[ByteString, Future[IOResult]] = { path: Path ⇒
+      FileIO.fromPath(path)
+    }
+
+    override def runnableGraph(): RunnableGraph[_] = {
+      Source.single(NotUsed)
+        .flatMapConcat(listFiles)
+        .flatMapConcat(readFile)
         .via(Framing.delimiter(ByteString("\n"), 1024))
-        .map(_.utf8String)
-        .to(plainSink(out))
+        .map(s => PaymentData(s.utf8String))
+        .to(plainSink(paymentsOut))
+    }
+
   }
+
 
 }
