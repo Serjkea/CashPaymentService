@@ -10,8 +10,8 @@ import cloudflow.streamlets.avro.AvroInlet
 
 class PaymentLoggingEgress extends AkkaStreamlet{
 
-  val checkStatusIn: AvroInlet[PaymentStatus] = AvroInlet[PaymentStatus]("checkStatusIn")
-  val processStatusIn: AvroInlet[PaymentStatus] = AvroInlet[PaymentStatus]("processStatusIn")
+  val checkStatusIn: AvroInlet[PaymentStatus] = AvroInlet[PaymentStatus]("check-status-in")
+  val processStatusIn: AvroInlet[PaymentStatus] = AvroInlet[PaymentStatus]("process-status-in")
 
   override def shape(): StreamletShape = StreamletShape.withInlets(checkStatusIn,processStatusIn)
 

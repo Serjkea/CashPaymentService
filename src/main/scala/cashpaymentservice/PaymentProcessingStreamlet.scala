@@ -11,10 +11,10 @@ import org.apache.flink.streaming.api.scala.DataStream
 
 class PaymentProcessingStreamlet extends FlinkStreamlet{
 
-  @transient val participantsIn: AvroInlet[ParticipantData] = AvroInlet[ParticipantData]("participantsIn")
-  @transient val validPaymentsIn: AvroInlet[ValidPayment] = AvroInlet[ValidPayment]("validPaymentsIn")
+  @transient val participantsIn: AvroInlet[ParticipantData] = AvroInlet[ParticipantData]("participants-in")
+  @transient val validPaymentsIn: AvroInlet[ValidPayment] = AvroInlet[ValidPayment]("validPayments-in")
 
-  @transient val processStatusOut: AvroOutlet[PaymentStatus] = AvroOutlet[PaymentStatus]("processStatusOut")
+  @transient val processStatusOut: AvroOutlet[PaymentStatus] = AvroOutlet[PaymentStatus]("process-status-out")
 
   override def shape(): StreamletShape = StreamletShape(processStatusOut).withInlets(participantsIn,validPaymentsIn)
 

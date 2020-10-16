@@ -10,10 +10,10 @@ import org.apache.flink.util.Collector
 
 class PaymentCheckingStreamlet extends FlinkStreamlet {
 
-  @transient val paymentsIn: AvroInlet[PaymentData] = AvroInlet[PaymentData]("paymentsIn")
+  @transient val paymentsIn: AvroInlet[PaymentData] = AvroInlet[PaymentData]("payments-in")
 
-  @transient val checkStatusOut: AvroOutlet[PaymentStatus] = AvroOutlet[PaymentStatus]("checkStatusOut")
-  @transient val validPaymentsOut: AvroOutlet[ValidPayment] = AvroOutlet[ValidPayment]("validPaymentsOut")
+  @transient val checkStatusOut: AvroOutlet[PaymentStatus] = AvroOutlet[PaymentStatus]("check-status-out")
+  @transient val validPaymentsOut: AvroOutlet[ValidPayment] = AvroOutlet[ValidPayment]("valid-payments-out")
 
   override def shape(): StreamletShape = StreamletShape(paymentsIn).withOutlets(checkStatusOut,validPaymentsOut)
 

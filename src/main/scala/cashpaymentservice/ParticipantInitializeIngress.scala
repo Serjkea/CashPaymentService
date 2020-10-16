@@ -11,7 +11,7 @@ import JsonParticipant._
 
 class ParticipantInitializeIngress extends AkkaServerStreamlet{
 
-  val participantsOut: AvroOutlet[ParticipantData] = AvroOutlet[ParticipantData]("participantsOut").withPartitioner(RoundRobinPartitioner)
+  val participantsOut: AvroOutlet[ParticipantData] = AvroOutlet[ParticipantData]("participants-out").withPartitioner(RoundRobinPartitioner)
 
   final override def shape(): StreamletShape = StreamletShape.withOutlets(participantsOut)
 

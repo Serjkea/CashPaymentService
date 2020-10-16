@@ -17,7 +17,7 @@ import scala.concurrent.Future
 
 class FilePaymentsIngress extends AkkaStreamlet {
 
-  val paymentsOut: AvroOutlet[PaymentData] = AvroOutlet[PaymentData]("paymentsOut").withPartitioner(RoundRobinPartitioner)
+  val paymentsOut: AvroOutlet[PaymentData] = AvroOutlet[PaymentData]("payments-out").withPartitioner(RoundRobinPartitioner)
 
   override def shape(): StreamletShape = StreamletShape.withOutlets(paymentsOut)
 
