@@ -32,30 +32,38 @@ class PaymentProcessingStreamlet extends FlinkStreamlet{
 
 class MakingPayment extends RichCoMapFunction[ParticipantData,ValidPayment,PaymentStatus] {
 
-  @transient var mapState: MapState[Int, Int] = _
+  @transient var mapState: MapState[String, Int] = _
 
   override def open(parameters: Configuration): Unit = {
     super.open(parameters)
-    mapState = getRuntimeContext.getMapState(new MapStateDescriptor[Int, Int]("participant", classOf[Int], classOf[Int]))
+    mapState = getRuntimeContext.getMapState(new MapStateDescriptor[String, Int]("participant", classOf[String], classOf[Int]))
   }
 
   override def map1(participant: ParticipantData): PaymentStatus = {
-    mapState.put(participant.id, participant.balance)
-    PaymentStatus("INFO", s"For participant with ${participant.id} balance updated")
+    mapState.put(participant.nameId, participant.balance)
+    PaymentStatus("INFO", s"For participant ${participant.nameId} balance updated")
   }
 
-  override def map2(payment: ValidPayment): PaymentStatus = {
-    val payer = payment.from.toInt  //TODO!!!
-    val amount = payment.value
-    if (mapState.contains(payer)) {
-      val balance: Int = mapState.get(payer)
-      if (balance >= amount) {
-        mapState.put(payer, balance - amount)
-        PaymentStatus("INFO", s"Payment $payment was made!")
-      } else
-        PaymentStatus("WARN", s"There is not enough money on the payer's $payer balance!")
+  override def map2(payment: ValidPayment): PaymentStatus = makePayment(payment)
+
+  def makePayment(payment: ValidPayment): PaymentStatus = {
+    if (hasParticipants(payment.from, payment.recipient)) {
+      if (isEnoughBalance(payment.from, payment.value))
+        updateBalance(payment.from, payment.recipient,payment.value)
+      else
+        PaymentStatus("WARN", s"There is not enough money on the payer's ${payment.from} balance!")
     }
-    PaymentStatus("WARN", s"The payer $payer was not found!")
+    PaymentStatus("WARN", s"Transfer is not possible! Check the participants")
+  }
+
+  def hasParticipants(payerId : String, recipientId: String): Boolean = mapState.contains(payerId) && mapState.contains(recipientId)
+
+  def isEnoughBalance(payerId: String, amount:Int): Boolean = mapState.get(payerId) >= amount
+
+  def updateBalance(payerId: String, recipientId: String, amount: Int): PaymentStatus = {
+    mapState.put(payerId, mapState.get(payerId) - amount)
+    mapState.put(recipientId, mapState.get(recipientId) + amount)
+    PaymentStatus("INFO", s"Payment from $payerId to $recipientId completed successfully!")
   }
 
 }

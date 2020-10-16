@@ -3,12 +3,12 @@ package cashpaymentservice
 
 import scala.annotation.switch
 
-case class ParticipantData(var id: Int, var balance: Int) extends org.apache.avro.specific.SpecificRecordBase {
-  def this() = this(0, 0)
+case class ParticipantData(var nameId: String, var balance: Int) extends org.apache.avro.specific.SpecificRecordBase {
+  def this() = this("", 0)
   def get(field$: Int): AnyRef = {
     (field$: @switch) match {
       case 0 => {
-        id
+        nameId
       }.asInstanceOf[AnyRef]
       case 1 => {
         balance
@@ -18,9 +18,9 @@ case class ParticipantData(var id: Int, var balance: Int) extends org.apache.avr
   }
   def put(field$: Int, value: Any): Unit = {
     (field$: @switch) match {
-      case 0 => this.id = {
-        value
-      }.asInstanceOf[Int]
+      case 0 => this.nameId = {
+        value.toString
+      }.asInstanceOf[String]
       case 1 => this.balance = {
         value
       }.asInstanceOf[Int]
@@ -32,5 +32,5 @@ case class ParticipantData(var id: Int, var balance: Int) extends org.apache.avr
 }
 
 object ParticipantData {
-  val SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ParticipantData\",\"namespace\":\"cashpaymentservice\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"balance\",\"type\":\"int\"}]}")
+  val SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ParticipantData\",\"namespace\":\"cashpaymentservice\",\"fields\":[{\"name\":\"nameId\",\"type\":\"string\"},{\"name\":\"balance\",\"type\":\"int\"}]}")
 }
