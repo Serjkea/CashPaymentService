@@ -12,19 +12,19 @@ import org.apache.flink.streaming.api.scala.DataStream
 class PaymentProcessingStreamlet extends FlinkStreamlet{
 
   @transient val participantsIn: AvroInlet[ParticipantData] = AvroInlet[ParticipantData]("participantsIn")
-  @transient val validPaymentIn: AvroInlet[ValidPayment] = AvroInlet[ValidPayment]("validPaymentIn")
+  @transient val validPaymentsIn: AvroInlet[ValidPayment] = AvroInlet[ValidPayment]("validPaymentsIn")
 
-  @transient val paymentStatusOut: AvroOutlet[PaymentStatus] = AvroOutlet[PaymentStatus]("paymentStatusOut")
+  @transient val paymentsStatusOut: AvroOutlet[PaymentStatus] = AvroOutlet[PaymentStatus]("paymentsStatusOut")
 
-  override def shape(): StreamletShape = StreamletShape(paymentStatusOut).withInlets(participantsIn,validPaymentIn)
+  override def shape(): StreamletShape = StreamletShape(paymentsStatusOut).withInlets(participantsIn,validPaymentsIn)
 
   override protected def createLogic(): FlinkStreamletLogic = new FlinkStreamletLogic() {
     override def buildExecutionGraph(): Unit = {
       val inputParticipant: DataStream[ParticipantData] = readStream(participantsIn)
-      val inputValidPayment: DataStream[ValidPayment] = readStream(validPaymentIn)
+      val inputValidPayment: DataStream[ValidPayment] = readStream(validPaymentsIn)
 
       val outputPaymentStatus: DataStream[PaymentStatus] = inputParticipant.connect(inputValidPayment).map(new MakingPayment)
-      writeStream(paymentStatusOut,outputPaymentStatus)
+      writeStream(paymentsStatusOut,outputPaymentStatus)
     }
   }
 
