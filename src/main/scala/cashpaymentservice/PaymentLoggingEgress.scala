@@ -1,6 +1,7 @@
 package cashpaymentservice
 
-import akka.stream.scaladsl.{RunnableGraph, Source}
+import akka.event.LoggingAdapter
+import akka.stream.scaladsl.{RunnableGraph, Sink}
 import cloudflow.akkastream.scaladsl.RunnableGraphStreamletLogic
 import cloudflow.akkastream.util.scaladsl.Merger
 import cloudflow.akkastream.{AkkaStreamlet, AkkaStreamletLogic}
@@ -9,20 +10,20 @@ import cloudflow.streamlets.avro.AvroInlet
 
 class PaymentLoggingEgress extends AkkaStreamlet{
 
-  val checkIn = AvroInlet[PaymentStatus]("checkIn")
-  val statusIn = AvroInlet[PaymentStatus]("statusIn")
+  val checkStatusIn: AvroInlet[PaymentStatus] = AvroInlet[PaymentStatus]("checkStatusIn")
+  val processStatusIn: AvroInlet[PaymentStatus] = AvroInlet[PaymentStatus]("processStatusIn")
 
-  override def shape(): StreamletShape = StreamletShape.withInlets(checkIn,statusIn)
+  override def shape(): StreamletShape = StreamletShape.withInlets(checkStatusIn,processStatusIn)
 
   override protected def createLogic(): AkkaStreamletLogic = new RunnableGraphStreamletLogic() {
 
-    val log = system.log
+    val log: LoggingAdapter = system.log
 
     override def runnableGraph(): RunnableGraph[_] = {
-      Merger.source(checkIn,statusIn).map(s => s.infoType match {
+      Merger.source(checkStatusIn,processStatusIn).map(s => s.infoType match {
         case "WARN" => log.warning(s.message)
         case "INFO" => log.info(s.message)
-      })
+      }).to(Sink.ignore)
     }
   }
 
