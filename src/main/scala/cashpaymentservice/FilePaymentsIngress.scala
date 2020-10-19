@@ -11,7 +11,7 @@ import akka.util.ByteString
 import cloudflow.akkastream.scaladsl.RunnableGraphStreamletLogic
 import cloudflow.akkastream.{AkkaStreamlet, AkkaStreamletLogic}
 import cloudflow.streamlets.avro.AvroOutlet
-import cloudflow.streamlets.{ReadOnlyMany, RoundRobinPartitioner, StreamletShape, VolumeMount}
+import cloudflow.streamlets.{RoundRobinPartitioner, StreamletShape, StringConfigParameter}
 
 import scala.concurrent.Future
 
@@ -21,13 +21,13 @@ class FilePaymentsIngress extends AkkaStreamlet {
 
   override def shape(): StreamletShape = StreamletShape.withOutlets(paymentsOut)
 
-  private val sourceData = VolumeMount("payments-data-mount", "/test-data", ReadOnlyMany)
-  override def volumeMounts = Vector(sourceData)
+  val fileName: StringConfigParameter = StringConfigParameter("payments.filename","payments filename",Some("payments.dat"))
+  val fileDirectory: StringConfigParameter = StringConfigParameter("payments.directory","payments directory",Some("/test-data"))
 
   override protected def createLogic(): AkkaStreamletLogic = new RunnableGraphStreamletLogic() {
 
     val listFiles: NotUsed ⇒ Source[file.Path, NotUsed] = { _ ⇒
-      Directory.ls(getMountedPath(sourceData))
+      Directory.ls(Path.of(fileDirectory.key))
     }
     val readFile: Path ⇒ Source[ByteString, Future[IOResult]] = { path: Path ⇒
       FileIO.fromPath(path)
